@@ -1,7 +1,7 @@
 {
   "memory":"200",
   "networkMode":"awsvpc",
-  "cpu":"100",
+  "cpu":"128",
   "family":"parchmint",
    "containerDefinitions": [
        {
