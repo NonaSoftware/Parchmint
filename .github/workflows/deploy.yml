@@ -11,16 +11,14 @@ name: Deploy to Amazon ECS
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [ "master" ]
+    branches: [production]
 
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-east-1
   ECR_REPOSITORY: parchmint          # set this to your Amazon ECR repository name
   ECS_SERVICE: parchmint-service               # set this to your Amazon ECS service name
   ECS_CLUSTER: nona-research-foundation               # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: parchmint-def.json # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: task-definition.json # set this to the path to your Amazon ECS task definition
   CONTAINER_NAME: parchmint           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
@@ -67,21 +65,23 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: "latest"
         run: |
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG  -t nonasoftware/$IMAGE_TAG -t ghcr.io/nonasoftware/$IMAGE_TAG .
-          docker push -a
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG  -t nonasoftware/$ECR_REPOSITORY:$IMAGE_TAG -t ghcr.io/nonasoftware/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push nonasoftware/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push ghcr.io/nonasoftware/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@97587c9d45a4930bf0e3da8dd2feb2a463cf4a3a
         with:
-          task-definition: ${{ env.ECS_TASK_DEFINITION }}
-          container-name: ${{ env.CONTAINER_NAME }}
+          task-definition: task-definition.json
+          container-name: ${{ env.CONTAINER_NAME }}-container
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition

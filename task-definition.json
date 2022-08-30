@@ -1,0 +1,33 @@
+{
+  "memory":"200",
+  "networkMode":"bridge",
+  "cpu":"128",
+  "family":"parchmint",
+   "containerDefinitions": [
+       {
+           "memory": 200,
+           "portMappings": [
+               {
+                   "hostPort": 8080,
+                   "containerPort": 8080,
+                   "protocol": "tcp"
+               },
+               {
+                   "hostPort": 8443,
+                   "containerPort": 8443,
+                   "protocol": "tcp"
+               }
+           ],
+           "essential": true,
+           "name": "parchmint-container",
+           "logConfiguration": {
+               "logDriver": "awslogs",
+               "options": {
+                   "awslogs-group": "/ecs/parchmint-container",
+                   "awslogs-region": "us-east-1",
+                   "awslogs-stream-prefix": "parchmint"
+               }
+           }
+       }
+   ]
+}
