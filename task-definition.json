@@ -2,7 +2,7 @@
   "memory":"200",
   "networkMode":"awsvpc",
   "cpu":"100",
-  "family":"jetty",
+  "family":"parchmint",
    "containerDefinitions": [
        {
            "memory": 512,
@@ -20,7 +20,6 @@
            ],
            "essential": true,
            "name": "parchmint",
-           "image": "nonasoftware/parchmint",
            "logConfiguration": {
                "logDriver": "awslogs",
                "options": {
