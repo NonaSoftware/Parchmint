@@ -11,7 +11,7 @@ name: Deploy to Amazon ECS
 
 on:
   push:
-    branches: [production, gh-pages]
+    branches: [production]
   pull_request:
     branches: [ "production" ]
 
@@ -73,7 +73,9 @@ jobs:
           # push it to ECR so that it can
           # be deployed to ECS.
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG  -t nonasoftware/$IMAGE_TAG -t ghcr.io/nonasoftware/$IMAGE_TAG .
-          docker push -a
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push nonasoftware/$IMAGE_TAG
+          docker push ghcr.io/nonasoftware/$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Fill in the new image ID in the Amazon ECS task definition
