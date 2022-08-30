@@ -23,7 +23,7 @@
            "logConfiguration": {
                "logDriver": "awslogs",
                "options": {
-                   "awslogs-group": "/ecs/parchmint",
+                   "awslogs-group": "/ecs/parchmint-container",
                    "awslogs-region": "us-east-1",
                    "awslogs-stream-prefix": "parchmint"
                }
