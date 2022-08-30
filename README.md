@@ -201,14 +201,17 @@ Contributions are encouraged! Please read our [contributing guide](./docs/CONTRI
 
 ## Governance
 
-You can learn more about how the `Nona Research Foundation` is organized and managed from our [governance model](), which includes information about, and ways to contact the [@nonasoftware/steering-council and @napari/core-devs]().
+You can learn more about how the `Nona Research Foundation` is organized and managed from our [governance model]() which outlines our roles, responsibilities, and decision making processes, which includes information about, and ways to join the volunteers who help maintain Nona supported software. You can start by taking a look at [Code of Conduct](./docs/CODE_OF_CONDUCT.md) and [contributing guide](./docs/CONTRIBUTING.md). Our CI/CD is automatic to deploy to Amazon's ECS upon merging a pull request into production You can also always ask questions in the [slack developers group](https://join.slack.com/t/nona-network/shared_invite/zt-1etjfumia-3w4JreBT1rw_fQcPLM7dDw).
 
 ## help
 
-We're a community over in [Slack for help](https://join.slack.com/t/nona-network/shared_invite/zt-1etjfumia-3w4JreBT1rw_fQcPLM7dDw) and all help and support requests in an appropriate `puppeteer-help` channel. We look forward to interacting with you there. 
+We're a community over in [Slack for help](https://join.slack.com/t/nona-network/shared_invite/zt-1etjfumia-3w4JreBT1rw_fQcPLM7dDw) and all help and support requests in an appropriate `parchmint-help` channel. We look forward to interacting with you there. 
 
-Bug reports should be made on our [github issues](https://github.com/nonasoftware/puppeteer/issues/new?template=bug_report.md) using
+Bug reports should be made on our [github issues](https://github.com/nonasoftware/parchmint/issues/new?template=bug_report.md) using
 the bug report template. If you think something isn't working, don't hesitate to reach out - it is probably us and not you!
+
+## LICENSING
+Check our [BSD-3 License](./docs/LICENSE)
 
 ## institutional and funding partners
 
