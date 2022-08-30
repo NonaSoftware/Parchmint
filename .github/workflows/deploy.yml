@@ -11,9 +11,9 @@ name: Deploy to Amazon ECS
 
 on:
   push:
-    branches: [master]
+    branches: [production, gh-pages]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "production" ]
 
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-east-1
