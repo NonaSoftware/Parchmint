@@ -19,7 +19,7 @@
                }
            ],
            "essential": true,
-           "name": "parchmint",
+           "name": "parchmint-container",
            "logConfiguration": {
                "logDriver": "awslogs",
                "options": {
