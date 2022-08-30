@@ -1,6 +1,6 @@
 {
   "memory":"200",
-  "networkMode":"instance",
+  "networkMode":"bridge",
   "cpu":"128",
   "family":"parchmint",
    "containerDefinitions": [
