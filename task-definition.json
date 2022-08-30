@@ -5,7 +5,7 @@
   "family":"parchmint",
    "containerDefinitions": [
        {
-           "memory": 512,
+           "memory": 200,
            "portMappings": [
                {
                    "hostPort": 8080,
